@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: secrets  # 👈 this must match the environment where you added the secrets
+    environment: secrets  # 👈 Required to access environment-specific secrets
 
     steps:
       - name: Checkout code
@@ -29,3 +29,6 @@ jobs:
           context: .
           push: true
           tags: khuhshveer/basic:latest
+
+      - name: Run Docker container
+        run: docker run -d --name basic-container khuhshveer/basic:latest
